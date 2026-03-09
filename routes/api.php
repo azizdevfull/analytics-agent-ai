@@ -10,3 +10,4 @@ Route::get('/user', function (Request $request) {
 
 Route::post('/analytic/orders', [AnalyticController::class, 'orderAnalytic']);
 Route::post('/analytic/orders/continue', [AnalyticController::class, 'orderAnalyticContinue']);
+Route::post('/analytic/orders/stream', [AnalyticController::class, 'orderAnalyticStream']);

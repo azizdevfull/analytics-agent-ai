@@ -40,4 +40,22 @@ class AnalyticController extends Controller
         ]);
 
     }
+    public function orderAnalyticStream(Request $request)
+    {
+        $request->validate([
+            'conversation_id' => 'nullable|string',
+            'message' => 'required|string|max:1000',
+        ]);
+        $user = User::first();
+        $agent = new AnalyticsAgent;
+        $conversationId = $request->input('conversation_id');
+
+        if ($conversationId) {
+            $agent->continue($request->input('conversation_id'), $user);
+        } else {
+            $agent->forUser($user);
+        }
+        return $agent->stream($request->input('message'));
+
+    }
 }
