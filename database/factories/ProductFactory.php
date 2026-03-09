@@ -23,7 +23,7 @@ class ProductFactory extends Factory
                 'Anor',
                 'Apelsin',
                 'Uzum',
-                'Qulupnay'
+                'Qulupnay',
             ]),
 
             'description' => fake()->sentence(),

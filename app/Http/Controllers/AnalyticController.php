@@ -15,11 +15,13 @@ class AnalyticController extends Controller
         ]);
         $user = User::first();
         $response = AnalyticsAgent::make()->forUser($user)->prompt($request->input('message'));
+
         return response()->json([
             'conversation_id' => $response->conversationId,
-            'message' => (string) $response
+            'message' => (string) $response,
         ]);
     }
+
     public function orderAnalyticContinue(Request $request)
     {
         $request->validate([
@@ -27,16 +29,15 @@ class AnalyticController extends Controller
             'message' => 'required|string|max:1000',
         ]);
         $user = User::first();
-        $agent = new AnalyticsAgent();
+        $agent = new AnalyticsAgent;
         $response = $agent
             ->continue($request->input('conversation_id'), $user)
             ->prompt($request->input('message'));
 
         return response()->json([
             'conversation_id' => $response->conversationId,
-            'message' => (string) $response
+            'message' => (string) $response,
         ]);
-
 
     }
 }

@@ -24,7 +24,7 @@ class OrderFactory extends Factory
                 'pending',
                 'processing',
                 'shipped',
-                'delivered'
+                'delivered',
             ]),
             'quantity' => fake()->numberBetween(1, 10),
         ];

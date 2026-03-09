@@ -12,7 +12,6 @@ use Stringable;
 
 class OrderStatsTool implements Tool
 {
-
     public function description(): Stringable|string
     {
         return 'from va to yuborasan va status xam yuborsang boladi status bu senga kerakli status va senga order soni qaytadi:
@@ -30,7 +29,8 @@ class OrderStatsTool implements Tool
         $to = Carbon::parse($to)->endOfDay();
 
         $status = $request['status'];
-        $count = Order::whereBetween('created_at', [$from, $to])->when($status, fn($query) => $query->where('status', $status))->count();
+        $count = Order::whereBetween('created_at', [$from, $to])->when($status, fn ($query) => $query->where('status', $status))->count();
+
         return $count;
     }
 

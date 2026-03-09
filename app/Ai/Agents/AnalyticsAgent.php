@@ -27,7 +27,7 @@ class AnalyticsAgent implements Agent, Conversational, HasTools
     public function instructions(): Stringable|string
     {
         return 'Sen mening loyihamning analytic botisan sendan malumotlar bazasida analytic qilishing soraladi va senda tool lar bor shularni promptga qarab ishlatasan
-        xozirgi vaqt ' . now();
+        xozirgi vaqt '.now();
     }
 
     /**
@@ -48,7 +48,7 @@ class AnalyticsAgent implements Agent, Conversational, HasTools
     public function tools(): iterable
     {
         return [
-            new OrderStatsTool()
+            new OrderStatsTool,
         ];
     }
 }
