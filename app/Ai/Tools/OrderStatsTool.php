@@ -28,8 +28,8 @@ class OrderStatsTool implements Tool
         $from = Carbon::parse($from)->startOfDay();
         $to = Carbon::parse($to)->endOfDay();
 
-        $status = $request['status'];
-        $count = Order::whereBetween('created_at', [$from, $to])->when($status, fn ($query) => $query->where('status', $status))->count();
+        $status = $request['status'] ?? null;
+        $count = Order::whereBetween('created_at', [$from, $to])->when($status, fn($query) => $query->where('status', $status))->count();
 
         return $count;
     }
