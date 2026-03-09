@@ -8,14 +8,14 @@ use Illuminate\Http\Request;
 
 class OrderAiController extends Controller
 {
-    public function store(Request $reques)
+    public function store(Request $request)
     {
-        $reques->validate([
+        $request->validate([
             'message' => 'required|string',
         ]);
         $user = User::first();
         $response = (new OrderAgent())->forUser($user)
-            ->prompt($reques->input('message'));
+            ->prompt($request->input('message'));
 
         return response()->json([
             'conversation_id' => $response->conversationId,
@@ -25,6 +25,19 @@ class OrderAiController extends Controller
     }
     public function continue(Request $request)
     {
+        $request->validate([
+            'conversation_id' => 'required|string',
+            'message' => 'required|string',
+        ]);
+        $user = User::first();
+        $response = (new OrderAgent())
+            ->continue(conversationId: $request->input('conversation_id'), as: $user)
+            ->prompt($request->input('message'));
+
+        return response()->json([
+            'conversation_id' => $response->conversationId,
+            'response' => (string) $response,
+        ]);
 
     }
 }

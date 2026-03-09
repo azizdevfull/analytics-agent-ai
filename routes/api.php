@@ -10,5 +10,6 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::post('/orders/chat/start', [OrderAiController::class, 'store']);
+Route::post('/orders/chat/continue', [OrderAiController::class, 'continue']);
 
 Route::get('/orders', [OrderController::class, 'index']);
