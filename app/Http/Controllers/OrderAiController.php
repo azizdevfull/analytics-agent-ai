@@ -40,4 +40,22 @@ class OrderAiController extends Controller
         ]);
 
     }
+    // Streaming versiya (real-time)
+    public function stream(Request $request)
+    {
+        $request->validate([
+            'conversation_id' => 'nullable|string',
+            'message' => 'required|string|max:1000',
+        ]);
+        $user = User::first();
+        $agent = new OrderAgent;
+
+        if ($conversationId = $request->input('conversation_id')) {
+            $agent->continue($conversationId, as: $user);
+        } else {
+            $agent->forUser($user);
+        }
+
+        return $agent->stream($request->input('message'));
+    }
 }

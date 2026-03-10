@@ -9,4 +9,8 @@ class OrderController extends Controller
     {
         return Order::with('product')->get();
     }
+    public function show($id)
+    {
+        return Order::with('product')->findOrFail($id);
+    }
 }
