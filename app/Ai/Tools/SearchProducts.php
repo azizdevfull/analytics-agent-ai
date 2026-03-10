@@ -30,13 +30,13 @@ class SearchProducts implements Tool
 
         if (!$products) {
             return json_encode([
-                'success' => false,
+                'found' => false,
                 'message' => 'Hech qanday mahsulot topilmadi.',
             ]);
         }
 
         return json_encode([
-            'success' => true,
+            'found' => true,
             'message' => 'Quyidagi mahsulotlar topildi:',
             'products' => $products,
         ]);
