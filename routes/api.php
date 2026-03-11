@@ -14,6 +14,6 @@ Route::post('/orders/chat/continue', [OrderAiController::class, 'continue']);
 
 Route::get('/orders', [OrderController::class, 'index']);
 
-Route::get('/order/stream', [OrderAiController::class, 'stream']);
+Route::post('/orders/chat/stream', [OrderAiController::class, 'stream']);
 
 Route::get('/orders/{id}', [OrderController::class, 'show']);

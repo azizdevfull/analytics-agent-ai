@@ -15,7 +15,7 @@ use Laravel\Ai\Promptable;
 use Stringable;
 
 #[Provider(Lab::Gemini)]
-#[Model('gemini-3.1-flash-lite-preview')]
+#[Model('gemini-3-flash-preview')]
 class OrderAgent implements Agent, Conversational, HasTools
 {
     use Promptable, RemembersConversations;
