@@ -15,7 +15,7 @@ use Laravel\Ai\Promptable;
 use Stringable;
 
 #[Provider(Lab::Gemini)]
-#[Model('gemini-3-flash-preview')]
+#[Model('gemini-3.1-flash-lite-preview')]
 class OrderAgent implements Agent, Conversational, HasTools
 {
     use Promptable, RemembersConversations;
@@ -61,9 +61,9 @@ class OrderAgent implements Agent, Conversational, HasTools
         - Emoji ishlatib, chiroyli formatlash qil
 
         ## QOIDA #7 — Product ID:
-        - `create_order` chaqirishda faqat `search_products` tool qaytargan `product_id` larni ishlatgin.
+        - `create_order` chaqirishda faqat `search_products` tool qaytargan [{"id":8,"name":"Olma","price":"30189.00"}] id larni ishlatgin.
         - Hech qachon o'zingdan ID o'ylab topma yoki taxmin qilma.
-        - Agar qaysi product_id ekanligingda shubha bo'lsa — `search_products` ni qayta chaqir.
+        - Agar qaysi id ekanligingda shubha bo'lsa — `search_products` ni qayta chaqir.
 
         ## QOIDA #8 — Buyurtma yakunlanishi:
         - Buyurtma tasdiqlangach, "Buyurtmangiz qabul qilindi! Tez orada siz bilan bog'lanamiz." deb javob ber.

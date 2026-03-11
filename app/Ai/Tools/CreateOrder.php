@@ -12,7 +12,11 @@ class CreateOrder implements Tool
 {
     public function description(): Stringable|string
     {
-        return 'Foydalanuvchi tasdiqlagan buyurtmani yaratadi. Faqat foydalanuvchi tasdiqlagan mahsulot product_id va name larini yuboring.';
+        return 'Foydalanuvchi tasdiqlagan buyurtmani yaratadi. 
+        Faqat foydalanuvchi tasdiqlagan mahsulot id ni yuboring.
+        Adashmang, id ni o\'zing yaratma, search_products tool natijasidan olingan id lardan foydalan.
+        
+        ';
     }
 
     /**
@@ -32,7 +36,8 @@ class CreateOrder implements Tool
 
         return json_encode([
             'success' => true,
-            'order_id' => $order->id
+            'order_id' => $order->id,
+
         ]);
     }
 
