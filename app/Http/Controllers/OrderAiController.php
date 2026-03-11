@@ -19,7 +19,7 @@ class OrderAiController extends Controller
 
         return response()->json([
             'conversation_id' => $response->conversationId,
-            'response' => (string) $response,
+            'message' => (string) $response,  // "response" emas "message"
         ]);
 
     }
