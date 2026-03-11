@@ -5,6 +5,7 @@ namespace App\Ai\Agents;
 use App\Ai\Tools\SearchProducts;
 use Laravel\Ai\Attributes\Model;
 use Laravel\Ai\Attributes\Provider;
+use Laravel\Ai\Concerns\RemembersConversations;
 use Laravel\Ai\Contracts\Agent;
 use Laravel\Ai\Contracts\Conversational;
 use Laravel\Ai\Contracts\HasTools;
@@ -18,7 +19,7 @@ use Stringable;
 #[Model('gemini-3-flash-preview')]
 class OrderAgent implements Agent, Conversational, HasTools
 {
-    use Promptable;
+    use Promptable, RemembersConversations;
 
     /**
      * Get the instructions that the agent should follow.
